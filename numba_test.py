@@ -1,5 +1,6 @@
 import time
 import numba
+from numba import jit
 
 def for_python(s, e):
     tot = 0
@@ -7,7 +8,8 @@ def for_python(s, e):
         tot += i
     return tot
 
-@numba.vectorize
+# @numba.vectorize
+@jit(nopython=True)
 def for_numba(s, e):
     tot = 0
     for i in range(s, e):
